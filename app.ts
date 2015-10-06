@@ -29,6 +29,7 @@ class Article {
 
 @Component({
   selector: 'reddit-article'
+  properties: ['article']
 })
 
 @View({
@@ -50,9 +51,6 @@ class Article {
 
 class RedditArticle {
   article: Article;
-  constructor() {
-    this.article = new Article('Angular 2', 'http://angular.io');
-  }
 }
 
 @Component({
@@ -73,12 +71,22 @@ class RedditArticle {
       <button (click)="addArticle(newtitle, newlink)">Submit Link</button>
     </section>
 
-    <reddit-article></reddit-article>
+    <reddit-article *ng-for="#article of articles" [article]="article">
+    </reddit-article>
   `,
-  directives: [RedditArticle]
+  directives: [RedditArticle, NgFor]
 })
 
 class RedditApp {
+  articles: Array<Article>;
+
+  constructor() {
+    this.articles = [
+      new Article('Angular 2', 'http://angular.io'),
+      new Article('Fullstack', 'http://fullstack.io')
+    ];
+  }
+
   addArticle(title, link) {
     console.log("Adding article with title", title.value, "and link", link.value);
   }
