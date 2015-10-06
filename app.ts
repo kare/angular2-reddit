@@ -25,6 +25,10 @@ class Article {
     this.votes--
     return false
   }
+  domain() {
+    var link = this.link.split('//')[1];
+    return link.split('/')[0];
+  }
 }
 
 @Component({
@@ -39,6 +43,7 @@ class Article {
     <div class="main">
       <h2>
         <a href="{{ article.link }}">{{ article.title }}</a>
+        <span>({{ article.domain() }})</span>
       </h2>
       <ul>
         <li><a href (click)='article.voteUp()'>upvote</a></li>
