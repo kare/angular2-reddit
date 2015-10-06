@@ -7,14 +7,13 @@ To install dependencies and start compiling:
 
 ```
 npm install
-tsc --watch
+make watch
 ```
 
 Then run a local filesystem HTTP server:
 
 ```
-npm install -g live-server
-live-server
+make serve
 ```
 
 And visit [http://localhost:8080](http://localhost:8080)
