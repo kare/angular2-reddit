@@ -39,9 +39,11 @@ class RedditArticle {
   }
   voteUp() {
     this.votes++
+    return false
   }
   voteDown() {
     this.votes--
+    return false
   }
 }
 
