@@ -8,20 +8,25 @@ import {
 } from "angular2/angular2";
 
 @Component({
-  selector: 'hello-world'
+  selector: 'reddit'
 }) @View({
   directives: [NgFor],
   template: `
-  <ul>
-    <li *ng-for="#name of names">Hello {{ name }}</li>
-  </ul>
+    <section class="new-link">
+      <div class="control-group">
+        <div><label for="title">Title:</label></div>
+        <div><input name="title"></div>
+      </div>
+      <div class="control-group">
+        <div><label for="link">Link:</label></div>
+        <div><input name="link"></div>
+      </div>
+      <button>Submit Link</button>
+    </section>
   `
 })
 
-class HelloWorld {
-  names: Array<string>;
-  constructor() {
-    this.names = ['Ari', 'Carlos', 'Felipe', 'Nate'];
-} }
+class RedditApp {
+}
 
-bootstrap(HelloWorld);
+bootstrap(RedditApp);
