@@ -1,19 +1,15 @@
 # Getting started
 
-This is not working with WebPack yet. We are using Typescript's compiler `--watch`
-clause to get TypeScript compiled.
-
-To install dependencies and start compiling:
+To install dependencies:
 
 ```
 npm install
-make watch
 ```
 
-Then run a local filesystem HTTP server:
+Then run a local filesystem HTTP server and tsc in watch mode:
 
 ```
-make serve
+make
 ```
 
 And visit [http://localhost:8080](http://localhost:8080)

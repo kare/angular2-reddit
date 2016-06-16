@@ -1,6 +1,3 @@
 
 serve:
-	python -m SimpleHTTPServer
-
-watch:
-	tsc --watch
+	npm run go
