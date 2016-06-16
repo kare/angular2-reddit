@@ -11,12 +11,15 @@ class Article {
     this.link = link;
     this.votes = votes || 0;
   }
+
   voteUp(): void {
-    this.votes++
+    this.votes += 1;
   }
+
   voteDown(): void {
-    this.votes--
+    this.votes -= 1;
   }
+
   domain(): string {
     try {
       const link: string = this.link.split('//')[1];
@@ -34,36 +37,36 @@ class Article {
     class: 'row'
   },
   template: `
-  <div class="four wide column center aligned votes">
-    <div class="ui statistic">
-      <div class="value">
-        {{ article.votes }}
-      </div>
-      <div class="label">
-        Points
+    <div class="four wide column center aligned votes">
+      <div class="ui statistic">
+        <div class="value">
+          {{ article.votes }}
+        </div>
+        <div class="label">
+          Points
+        </div>
       </div>
     </div>
-  </div>
-  <div class="twelve wide column">
-    <a class="ui large header" href="{{ article.link }}">
-      {{ article.title }}
-    </a>
-    <div class="meta">({{ article.domain() }})</div>
-    <ul class="ui big horizontal list voters">
-      <li class="item">
-        <a href (click)="voteUp()">
-          <i class="arrow up icon"></i>
-            upvote
+    <div class="twelve wide column">
+      <a class="ui large header" href="{{ article.link }}">
+        {{ article.title }}
+      </a>
+
+      <ul class="ui big horizontal list voters">
+        <li class="item">
+          <a href (click)="voteUp()">
+            <i class="arrow up icon"></i>
+              upvote 
+            </a>
+        </li>
+        <li class="item"> 
+          <a href (click)="voteDown()">
+            <i class="arrow down icon"></i>
+            downvote
           </a>
-      </li>
-      <li class="item">
-        <a href (click)="voteDown()">
-          <i class="arrow down icon"></i>
-          downvote
-        </a>
-      </li>
-    </ul>
-  </div>
+        </li>
+      </ul>
+    </div>
   `
 })
 class ArticleComponent {
@@ -104,7 +107,7 @@ class ArticleComponent {
 
     <div class="ui grid posts">
       <reddit-article
-        *ngFor="let article of sortedArticles()"
+        *ngFor="let article of articles"
         [article]="article">
       </reddit-article>
     </div>
@@ -127,11 +130,6 @@ class RedditApp {
     title.value = '';
     link.value = '';
   }
-
-  sortedArticles(): Article[] {
-    return this.articles.sort((a: Article, b: Article) => b.votes - a.votes);
-  }
-
 }
 
 bootstrap(RedditApp);

@@ -1,17 +1,46 @@
 <!doctype html>
 <html>
   <head>
-    <title>Angular 2 - Poor Man's Reddit</title>
-    <script src="https://github.jspm.io/jmcriffey/bower-traceur-runtime@0.0.87/traceur-runtime.js"></script>
-    <script src="https://jspm.io/system@0.16.js"></script>
-    <script src="bundle/angular2.dev.js"></script>
+    <title>Angular 2 - Simple Reddit</title>
+    <link rel="icon" type="image/png" href="resources/images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" href="resources/images/favicon.ico" />
+    <!-- Libraries -->
+    <script src="node_modules/es6-shim/es6-shim.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="resources/vendor/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
+
+    <!-- Configure System.js, our module loader -->
+    <script src="resources/systemjs.config.js"></script>
     <script>
-      System.import('app');
+      System.import('app.js')
+            .then(null, console.error.bind(console));
     </script>
 
-    <reddit></reddit>
+    <!-- Menu Bar -->
+    <div class="ui menu">
+      <div class="ui container">
+        <a href="#" class="header item">
+          <img class="logo" src="resources/images/ng-book-2-minibook.png">
+          ng-book 2
+        </a>
+        <div class="header item borderless">
+          <h1 class="ui header">
+            Angular 2 Simple Reddit
+          </h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui main text container">
+      <reddit></reddit> <!-- <--- Our app loads here! -->
+    </div>
+
   </body>
 </html>
